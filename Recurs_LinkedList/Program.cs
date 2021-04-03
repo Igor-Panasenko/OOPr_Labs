@@ -19,7 +19,7 @@ namespace Recurs_LinkedList
 
     class RLinked_List
     {
-        private Node head;
+        public Node head;
         public RLinked_List() { }
 
         public RLinked_List(int data)
@@ -28,7 +28,10 @@ namespace Recurs_LinkedList
             this.head = temp;
         }
 
-
+        public RLinked_List(RLinked_List Same)
+        {
+            head = Same.head;
+        }
     }
 
     class Program
