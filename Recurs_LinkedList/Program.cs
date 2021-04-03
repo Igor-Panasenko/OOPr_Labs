@@ -155,6 +155,44 @@ namespace Recurs_LinkedList
 
         }
 
+        public int? Delete_withValue (int value)
+        {
+            Node temp = this.head;
+            if (temp.Data == value)
+            {
+                int count = temp.Data;
+                Node my = temp.Next;
+                this.head = my;
+                return count;
+            }
+            temp = temp.Next;
+            while (true)
+            {
+                if (temp.Next.Data == value && temp.Next.Next!=null)
+                {
+                    int number = temp.Data;
+                    temp.Next = temp.Next.Next;
+                    return number;
+                }
+                else
+                {
+                    if(temp.Next.Data == value && temp.Next.Next == null)
+                    {
+                        int number = temp.Next.Data;
+                        temp.Next = null;
+                        return number;
+                    }
+                }
+                temp = temp.Next;
+                if (temp.Next == null)
+                {
+                    break;
+                }
+            }
+            Console.WriteLine("in List no elements with this value");
+            return null;
+        }
+
     }
 
     class Program
@@ -169,9 +207,10 @@ namespace Recurs_LinkedList
             List_A.insertend(3);
             List_A.insertend(19);
             Console.WriteLine(List_A.Count_elements());
-            List_A.Add_atPosition(65, 2);
+            List_A.Add_atPosition(65, 3);
             List_A.insertend(1);
             List_A.Delete_Last();
+            List_A.Delete_withValue(5);
             List_A.insertend(1);
 
 
