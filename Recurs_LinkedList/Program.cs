@@ -7,7 +7,8 @@ namespace Recurs_LinkedList
         private int data;
         private Node next;
 
-
+        public int Data { get { return data; } }
+        public Node Next { get { return next; } set { next = value; } }
     }
 
     class RLinked_List
