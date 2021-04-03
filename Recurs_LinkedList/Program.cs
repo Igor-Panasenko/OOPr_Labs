@@ -134,6 +134,27 @@ namespace Recurs_LinkedList
             }
         }
         
+        public int Delete_Last()
+        {
+            Node temp = this.head;
+            int number=recDelete_Last(temp);
+            return number;
+        }
+        public int recDelete_Last(Node temp)
+        {
+            if (temp.Next.Next == null)
+            {
+                int count = temp.Next.Data;
+                temp.Next = null;
+                return count;
+            }
+            else
+            {
+                return recDelete_Last(temp.Next);
+            }
+
+        }
+
     }
 
     class Program
@@ -146,11 +167,11 @@ namespace Recurs_LinkedList
             List_A.insertend(34);
             List_A.insertend(56);
             List_A.insertend(3);
-            List_A.insertend(2);
-            List_A.insertend(7);
             List_A.insertend(19);
             Console.WriteLine(List_A.Count_elements());
             List_A.Add_atPosition(65, 2);
+            List_A.insertend(1);
+            List_A.Delete_Last();
             List_A.insertend(1);
 
 
