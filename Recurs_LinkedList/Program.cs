@@ -7,7 +7,7 @@ namespace Recurs_LinkedList
         private int data;
         private Node next;
 
-        public int Data { get { return data; } }
+        public int Data { get { return data; } set { data = value; } }
         public Node Next { get { return next; } set { next = value; } }
 
         public Node(int new_data)
@@ -28,6 +28,15 @@ namespace Recurs_LinkedList
             this.head = temp;
         }
 
+        public int First{ get 
+            {
+                return this.head.Data;
+            }
+            set
+            {
+                this.head.Data = value;
+            }
+        }
         public RLinked_List(RLinked_List Same)
         {
             head = Same.head;
@@ -203,12 +212,25 @@ namespace Recurs_LinkedList
                 arr[i] = temp.Data;
                 temp = temp.Next;
             }
-            Console.WriteLine("elements in the List in reverse: "+"\n");
+            Console.WriteLine("elements in the List in reverse order: ");
             
             for (int i= arr.Length-1; i>=0; i--)
             {
                 Console.Write(arr[i]+", ");
             }
+        }
+
+        public void Print()
+        {
+            Node temp = this.head;
+            Console.WriteLine("elements in List in right order: ");
+            while (temp != null)
+            {
+                Console.Write(temp.Data + ", ");
+                temp = temp.Next;
+            }
+            Console.WriteLine();
+            return;
         }
     }
 
@@ -229,6 +251,9 @@ namespace Recurs_LinkedList
             List_A.Delete_Last();
             List_A.Delete_withValue(5);
             List_A.insertend(1);
+            List_A.First = 44;
+            Console.WriteLine(List_A.First);
+            List_A.Print();
             List_A.Print_Reverse();
 
 
