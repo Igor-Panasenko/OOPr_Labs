@@ -9,6 +9,12 @@ namespace Recurs_LinkedList
 
         public int Data { get { return data; } }
         public Node Next { get { return next; } set { next = value; } }
+
+        public Node(int new_data)
+        {
+            data = new_data;
+            next = null;
+        }
     }
 
     class RLinked_List
