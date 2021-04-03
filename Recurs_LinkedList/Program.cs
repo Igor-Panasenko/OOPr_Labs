@@ -20,6 +20,8 @@ namespace Recurs_LinkedList
     class RLinked_List
     {
         private Node head;
+        public RLinked_List() { }
+
 
     }
 
