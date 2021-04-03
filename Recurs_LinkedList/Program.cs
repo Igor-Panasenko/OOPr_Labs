@@ -32,6 +32,31 @@ namespace Recurs_LinkedList
         {
             head = Same.head;
         }
+
+        public void insertend(int data)
+        {
+            Node temp = this.head;
+            Node newnode = new Node(data);
+            if (this.head == null)
+            {
+                this.head = newnode;
+                return;
+            }
+            temp.Next=recinsert(newnode,temp);
+        }
+
+        public Node recinsert(Node newnode, Node temp)
+        {
+            if (temp == null)
+            {
+                temp = newnode;
+                return temp;
+            }
+            else
+            {
+              return recinsert(newnode, temp.Next);
+            }
+        }
     }
 
     class Program
@@ -39,6 +64,13 @@ namespace Recurs_LinkedList
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            RLinked_List List_A = new RLinked_List();
+            List_A.insertend(34);
+            List_A.insertend(56);
+            List_A.insertend(3);
+
+
         }
     }
 }

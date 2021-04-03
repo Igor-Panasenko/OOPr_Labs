@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Recurs_LinkedList/1.0.0": {
+        "runtime": {
+          "Recurs_LinkedList.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Recurs_LinkedList/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
