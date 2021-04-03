@@ -174,7 +174,6 @@ namespace Recurs_LinkedList
                 this.head = my;
                 return count;
             }
-            temp = temp.Next;
             while (true)
             {
                 if (temp.Next.Data == value && temp.Next.Next!=null)
@@ -246,12 +245,12 @@ namespace Recurs_LinkedList
             List_A.insertend(3);
             List_A.insertend(19);
             Console.WriteLine(List_A.Count_elements());
-            List_A.Add_atPosition(65, 3);
+           // List_A.Add_atPosition(65, 4);
             List_A.insertend(1);
-            List_A.Delete_Last();
-            List_A.Delete_withValue(5);
-            List_A.insertend(1);
-            List_A.First = 44;
+            //List_A.Delete_Last();
+            List_A.Delete_withValue(56);
+           // List_A.insertend(1);
+           // List_A.First = 44;
             Console.WriteLine(List_A.First);
             List_A.Print();
             List_A.Print_Reverse();
