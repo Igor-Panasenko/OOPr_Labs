@@ -22,6 +22,12 @@ namespace Recurs_LinkedList
         private Node head;
         public RLinked_List() { }
 
+        public RLinked_List(int data)
+        {
+            Node temp = new Node(data);
+            this.head = temp;
+        }
+
 
     }
 
