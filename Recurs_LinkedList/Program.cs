@@ -45,7 +45,7 @@ namespace Recurs_LinkedList
             temp.Next=recinsert(newnode,temp);
         }
 
-        public Node recinsert(Node newnode, Node temp)
+        protected Node recinsert(Node newnode, Node temp)
         {
             if (temp == null)
             {
@@ -57,6 +57,26 @@ namespace Recurs_LinkedList
               return recinsert(newnode, temp.Next);
             }
         }
+        public void Add_atPosition(int new_data, int position)
+        {
+            Node temp = this.head;
+            
+            Node new_Node = new Node(new_data);
+            int count = 0;
+            while (true)
+            {
+                if (count == position)
+                {
+
+                }
+                if (temp.Next == null)
+                {
+
+                }
+
+            }
+        }
+        
     }
 
     class Program
