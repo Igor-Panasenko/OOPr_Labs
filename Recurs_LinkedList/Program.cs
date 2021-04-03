@@ -42,14 +42,15 @@ namespace Recurs_LinkedList
                 this.head = newnode;
                 return;
             }
-            temp.Next=recinsert(newnode,temp);
+            recinsert(newnode,temp);
+            return;
         }
 
         protected Node recinsert(Node newnode, Node temp)
         {
-            if (temp == null)
+            if (temp.Next == null)
             {
-                temp = newnode;
+                temp.Next = newnode;
                 return temp;
             }
             else
@@ -72,7 +73,7 @@ namespace Recurs_LinkedList
 
         public int Reccount_elements(Node temp, int count)
         {
-            if (temp == null)
+            if (temp.Next == null)
             {
                 count++;
                 return count;
@@ -87,21 +88,49 @@ namespace Recurs_LinkedList
 
         public void Add_atPosition(int new_data, int position)
         {
-            Node temp = this.head;
             
+            int count = Count_elements();
+            if (count < position)
+            {
+                Console.WriteLine("this position is too far, your element will be added to the end");
+                insertend(new_data);
+                return;
+            }
+            Node temp = this.head;
             Node new_Node = new Node(new_data);
-            int count = 0;
+            int number = 1;
+            if(position == count)
+            {
+                for(int i=1; i<count-1; i++)
+                {
+                    temp = temp.Next;
+                }
+                Node my = temp.Next;
+                temp.Next = new_Node;
+                new_Node.Next = my;
+                return;
+            }
+            if(position == 1)
+            {
+                Node my = this.head;
+                this.head = new_Node;
+                new_Node.Next = my;
+                return;
+            }
             while (true)
             {
-                if (count == position)
+                if (number == position-1)
                 {
-
+                    Node following = temp.Next;
+                    temp.Next = new_Node;
+                    new_Node.Next = following;
+                    return;
                 }
-                if (temp.Next == null)
+                else
                 {
-
+                    number++;
+                    temp = temp.Next;
                 }
-
             }
         }
         
@@ -117,7 +146,12 @@ namespace Recurs_LinkedList
             List_A.insertend(34);
             List_A.insertend(56);
             List_A.insertend(3);
+            List_A.insertend(2);
+            List_A.insertend(7);
+            List_A.insertend(19);
             Console.WriteLine(List_A.Count_elements());
+            List_A.Add_atPosition(65, 2);
+            List_A.insertend(1);
 
 
         }
