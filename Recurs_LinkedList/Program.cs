@@ -10,6 +10,11 @@ namespace Recurs_LinkedList
 
     }
 
+    class RLinked_List
+    {
+        private Node head;
+
+    }
 
     class Program
     {
