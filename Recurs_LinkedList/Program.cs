@@ -193,6 +193,23 @@ namespace Recurs_LinkedList
             return null;
         }
 
+        public void Print_Reverse()
+        {
+            Node temp = this.head;
+            int count = Count_elements();
+            int[] arr=new int [count];
+            for (int i=0; i<count; i++)
+            {
+                arr[i] = temp.Data;
+                temp = temp.Next;
+            }
+            Console.WriteLine("elements in the List in reverse: "+"\n");
+            
+            for (int i= arr.Length-1; i>=0; i--)
+            {
+                Console.Write(arr[i]+", ");
+            }
+        }
     }
 
     class Program
@@ -212,6 +229,7 @@ namespace Recurs_LinkedList
             List_A.Delete_Last();
             List_A.Delete_withValue(5);
             List_A.insertend(1);
+            List_A.Print_Reverse();
 
 
         }
