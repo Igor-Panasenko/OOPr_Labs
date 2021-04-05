@@ -322,8 +322,8 @@ namespace Recurs_LinkedList
             List_A.insertend(56);
             List_A.insertend(3);
             List_A.insertend(19);
-           List_A.insertend(87);
-            //List_A.insertend(86);
+            List_A.insertend(87);
+            Console.WriteLine("elements in A");
             List_A.Print();
 
             RLinked_List List_B = new RLinked_List(78);
@@ -331,31 +331,75 @@ namespace Recurs_LinkedList
             List_B.insertend(5);
             List_B.insertend(90);
             List_B.insertend(45);
+            Console.WriteLine("elements in B");
             List_B.Print();
+            Console.WriteLine();
 
             RLinked_List List_Sum = new RLinked_List();
 
             List_Sum = List_A + List_B;
+            Console.WriteLine("elements in Sum");
             List_Sum.Print();
+            RLinked_List copy_Sum = new RLinked_List(List_Sum);
+            Console.WriteLine("elements in copy");
+            copy_Sum.Print();
+            Console.WriteLine();
+
             bool b = List_A > List_B;
             bool c = List_A < List_B;
+            bool s = List_A < List_Sum;
+
+            Console.WriteLine("number of elements in list A: "+ List_A.Count_elements());
+            Console.WriteLine("number of elements in list B: " + List_B.Count_elements());
+            Console.WriteLine();
 
             Console.WriteLine(" operation List_A bigger List_B: " + b );
             Console.WriteLine("operation List_A less List_B: " + c);
+            Console.WriteLine("operation List_A less List_Sum: " + s);
+            Console.WriteLine();
 
+            List_A.Add_atPosition(65, 4);
+            Console.WriteLine("add 65 at position 4 List A");
+            List_A.Print();
+            Console.WriteLine();
 
+            List_A.insertend(1);
+            Console.WriteLine("add 1 at last position");
+            List_A.Print();
+            Console.WriteLine();
 
+            List_A.Delete_Last();
+            Console.WriteLine("delete last position");
+            List_A.Print();
+            Console.WriteLine();
 
-            /*  Console.WriteLine(List_A.Count_elements());
-             // List_A.Add_atPosition(65, 4);
-              List_A.insertend(1);
-              //List_A.Delete_Last();
-              List_A.Delete_withValue(56);
-             // List_A.insertend(1);
-             // List_A.First = 44;
-              Console.WriteLine(List_A.First);
-              List_A.Print();
-              List_A.Print_Reverse();*/
+            List_A.Delete_withValue(56);
+              List_A.Delete_withValue(7);
+            Console.WriteLine("trying to delete 56 and 7");
+            List_A.Print();
+            Console.WriteLine();
+
+            List_A.First = 44;
+            Console.WriteLine("change value first in A");
+            List_A.Print();
+            Console.WriteLine();
+
+            Console.WriteLine(List_A.First);
+              List_A.Print_Reverse();
+            Console.WriteLine();
+
+            List_A.insertend(99);
+            Console.WriteLine("elements in A");
+            List_A.Print();
+            Console.WriteLine("elements in B");
+            List_B.Print();
+            Console.WriteLine();
+
+            bool d = List_A > List_B;
+            bool e = List_A < List_B;
+            Console.WriteLine(" operation List_A bigger List_B: " + d);
+            Console.WriteLine("operation List_A less List_B: " + e);
+            Console.WriteLine();
         }
     }
 }
