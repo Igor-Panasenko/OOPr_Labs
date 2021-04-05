@@ -233,14 +233,81 @@ namespace Recurs_LinkedList
         }
         public static RLinked_List operator +(RLinked_List r1, RLinked_List r2)
         {
-            Node temp = r2.head;
-            RLinked_List r3 = r1;
-            while (temp != null)
+            Node temp2 = r2.head;
+            Node temp1 = r1.head;
+            RLinked_List r3 = new RLinked_List();
+            while (temp1 != null)
             {
-                r3.insertend(temp.Data);
-                temp = temp.Next;
+                r3.insertend(temp1.Data);
+                temp1 = temp1.Next;
+            }
+
+            while (temp2 != null)
+            {
+                r3.insertend(temp2.Data);
+                temp2 = temp2.Next;
             }
             return r3;
+        }
+
+        public static bool operator >(RLinked_List r1, RLinked_List r2)
+        {
+            Node temp1 = r1.head;
+            Node temp2 = r2.head;
+            int count1 = 0;
+            int count2 = 0;
+            while (temp1 != null)
+            {
+                count1++;
+                temp1 = temp1.Next;
+            }
+            while (temp2 != null)
+            {
+                count2++;
+                temp2 = temp2.Next;
+            }
+            if(count1 == count2)
+            {
+                return false;
+            }
+            if (count1 > count2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator <(RLinked_List r1, RLinked_List r2)
+        {
+            Node temp1 = r1.head;
+            Node temp2 = r2.head;
+            int count1 = 0;
+            int count2 = 0;
+            while (temp1 != null)
+            {
+                count1++;
+                temp1 = temp1.Next;
+            }
+            while (temp2 != null)
+            {
+                count2++;
+                temp2 = temp2.Next;
+            }
+            if (count1 == count2)
+            {
+                return false;
+            }
+            if (count1 < count2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 
@@ -255,6 +322,8 @@ namespace Recurs_LinkedList
             List_A.insertend(56);
             List_A.insertend(3);
             List_A.insertend(19);
+           List_A.insertend(87);
+            //List_A.insertend(86);
             List_A.Print();
 
             RLinked_List List_B = new RLinked_List(78);
@@ -268,6 +337,11 @@ namespace Recurs_LinkedList
 
             List_Sum = List_A + List_B;
             List_Sum.Print();
+            bool b = List_A > List_B;
+            bool c = List_A < List_B;
+
+            Console.WriteLine(" operation List_A bigger List_B: " + b );
+            Console.WriteLine("operation List_A less List_B: " + c);
 
 
 
