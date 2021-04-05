@@ -231,6 +231,17 @@ namespace Recurs_LinkedList
             Console.WriteLine();
             return;
         }
+        public static RLinked_List operator +(RLinked_List r1, RLinked_List r2)
+        {
+            Node temp = r2.head;
+            RLinked_List r3 = r1;
+            while (temp != null)
+            {
+                r3.insertend(temp.Data);
+                temp = temp.Next;
+            }
+            return r3;
+        }
     }
 
     class Program
@@ -244,18 +255,33 @@ namespace Recurs_LinkedList
             List_A.insertend(56);
             List_A.insertend(3);
             List_A.insertend(19);
-            Console.WriteLine(List_A.Count_elements());
-           // List_A.Add_atPosition(65, 4);
-            List_A.insertend(1);
-            //List_A.Delete_Last();
-            List_A.Delete_withValue(56);
-           // List_A.insertend(1);
-           // List_A.First = 44;
-            Console.WriteLine(List_A.First);
             List_A.Print();
-            List_A.Print_Reverse();
+
+            RLinked_List List_B = new RLinked_List(78);
+            List_B.insertend(3);
+            List_B.insertend(5);
+            List_B.insertend(90);
+            List_B.insertend(45);
+            List_B.Print();
+
+            RLinked_List List_Sum = new RLinked_List();
+
+            List_Sum = List_A + List_B;
+            List_Sum.Print();
 
 
+
+
+            /*  Console.WriteLine(List_A.Count_elements());
+             // List_A.Add_atPosition(65, 4);
+              List_A.insertend(1);
+              //List_A.Delete_Last();
+              List_A.Delete_withValue(56);
+             // List_A.insertend(1);
+             // List_A.First = 44;
+              Console.WriteLine(List_A.First);
+              List_A.Print();
+              List_A.Print_Reverse();*/
         }
     }
 }
