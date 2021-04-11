@@ -97,48 +97,56 @@ namespace Recurs_LinkedList
 
         public void Add_atPosition(int new_data, int position)
         {
-            
-            int count = Count_elements();
-            if (count < position)
+            if (position <= 0)
             {
-                Console.WriteLine("this position is too far, your element will be added to the end");
-                insertend(new_data);
+                Console.WriteLine("elements in List starts with 1st and bigger");
                 return;
             }
-            Node temp = this.head;
-            Node new_Node = new Node(new_data);
-            int number = 1;
-            if(position == count)
+            else
             {
-                for(int i=1; i<count-1; i++)
+
+                int count = Count_elements();
+                if (count < position)
                 {
-                    temp = temp.Next;
-                }
-                Node my = temp.Next;
-                temp.Next = new_Node;
-                new_Node.Next = my;
-                return;
-            }
-            if(position == 1)
-            {
-                Node my = this.head;
-                this.head = new_Node;
-                new_Node.Next = my;
-                return;
-            }
-            while (true)
-            {
-                if (number == position-1)
-                {
-                    Node following = temp.Next;
-                    temp.Next = new_Node;
-                    new_Node.Next = following;
+                    Console.WriteLine("this position is too far, your element will be added to the end");
+                    insertend(new_data);
                     return;
                 }
-                else
+                Node temp = this.head;
+                Node new_Node = new Node(new_data);
+                int number = 1;
+                if (position == count)
                 {
-                    number++;
-                    temp = temp.Next;
+                    for (int i = 1; i < count - 1; i++)
+                    {
+                        temp = temp.Next;
+                    }
+                    Node my = temp.Next;
+                    temp.Next = new_Node;
+                    new_Node.Next = my;
+                    return;
+                }
+                if (position == 1)
+                {
+                    Node my = this.head;
+                    this.head = new_Node;
+                    new_Node.Next = my;
+                    return;
+                }
+                while (true)
+                {
+                    if (number == position - 1)
+                    {
+                        Node following = temp.Next;
+                        temp.Next = new_Node;
+                        new_Node.Next = following;
+                        return;
+                    }
+                    else
+                    {
+                        number++;
+                        temp = temp.Next;
+                    }
                 }
             }
         }
@@ -325,8 +333,9 @@ namespace Recurs_LinkedList
             List_A.insertend(87);
             Console.WriteLine("elements in A");
             List_A.Print();
+            List_A.Add_atPosition(34, -1);
 
-            RLinked_List List_B = new RLinked_List(78);
+          /*  RLinked_List List_B = new RLinked_List(78);
             List_B.insertend(3);
             List_B.insertend(5);
             List_B.insertend(90);
@@ -399,7 +408,7 @@ namespace Recurs_LinkedList
             bool e = List_A < List_B;
             Console.WriteLine(" operation List_A bigger List_B: " + d);
             Console.WriteLine("operation List_A less List_B: " + e);
-            Console.WriteLine();
+            Console.WriteLine();*/
         }
     }
 }
