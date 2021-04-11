@@ -188,6 +188,14 @@ namespace Recurs_LinkedList
                 this.head = my;
                 return count;
             }
+            else
+            {
+                if (temp.Next == null)
+                {
+                    Console.WriteLine("in List no elements with this value");
+                    return null;
+                }
+            }
             while (true)
             {
                 if (temp.Next.Data == value && temp.Next.Next!=null)
@@ -331,20 +339,25 @@ namespace Recurs_LinkedList
         {
             Console.WriteLine("Hello World!");
 
+            RLinked_List List_D = new RLinked_List();
+            List_D.insertend(34);
+            List_D.Delete_withValue(56); //исправлено номер 18, удаление элемента из списка из 1 элемента
+            List_D.Print();
+
             RLinked_List List_A = new RLinked_List();
-            List_A.insertend(34);
+            List_A.insertend(34);           
             List_A.insertend(56);
             List_A.insertend(3);
             List_A.insertend(19);
             List_A.insertend(87);
             Console.WriteLine("elements in A");
             List_A.Print();
-            List_A.Add_atPosition(99, -2); //исправлено добаление с отрицательным индексом
+            List_A.Add_atPosition(99, -2); //исправлено номер 7 добаление с отрицательным индексом 
             List_A.Print();
             List_A.Delete_Last();
             List_A.Print();
 
-            // проверка удаления 1 элемента
+            // исправлено номер 15, проверка удаления 1 элемента
             RLinked_List List_1 = new RLinked_List(78);
             List_1.Delete_Last();
             List_1.Print();
@@ -422,7 +435,7 @@ namespace Recurs_LinkedList
             bool e = List_A < List_B;
             Console.WriteLine(" operation List_A bigger List_B: " + d);
             Console.WriteLine("operation List_A less List_B: " + e);
-            Console.WriteLine();
+            Console.WriteLine();*/
         }
     }
 }
