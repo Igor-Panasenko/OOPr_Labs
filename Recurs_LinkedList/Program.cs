@@ -159,6 +159,12 @@ namespace Recurs_LinkedList
         }
         public int recDelete_Last(Node temp)
         {
+            if (temp.Next == null)
+            {
+                int count = this.head.Data;
+                this.head = null;
+                return count;
+            }
             if (temp.Next.Next == null)
             {
                 int count = temp.Next.Data;
@@ -333,9 +339,17 @@ namespace Recurs_LinkedList
             List_A.insertend(87);
             Console.WriteLine("elements in A");
             List_A.Print();
-            List_A.Add_atPosition(34, -1);
+            List_A.Add_atPosition(99, -2); //исправлено добаление с отрицательным индексом
+            List_A.Print();
+            List_A.Delete_Last();
+            List_A.Print();
 
-          /*  RLinked_List List_B = new RLinked_List(78);
+            // проверка удаления 1 элемента
+            RLinked_List List_1 = new RLinked_List(78);
+            List_1.Delete_Last();
+            List_1.Print();
+
+            RLinked_List List_B = new RLinked_List(78);
             List_B.insertend(3);
             List_B.insertend(5);
             List_B.insertend(90);
@@ -382,9 +396,9 @@ namespace Recurs_LinkedList
             List_A.Print();
             Console.WriteLine();
 
-            List_A.Delete_withValue(56);
-              List_A.Delete_withValue(7);
-            Console.WriteLine("trying to delete 56 and 7");
+            List_A.Delete_withValue(34); //удаление элемента 34
+            List_A.Delete_withValue(7);
+            Console.WriteLine("trying to delete 34 and 7");
             List_A.Print();
             Console.WriteLine();
 
@@ -408,7 +422,7 @@ namespace Recurs_LinkedList
             bool e = List_A < List_B;
             Console.WriteLine(" operation List_A bigger List_B: " + d);
             Console.WriteLine("operation List_A less List_B: " + e);
-            Console.WriteLine();*/
+            Console.WriteLine();
         }
     }
 }
