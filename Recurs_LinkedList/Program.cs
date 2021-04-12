@@ -22,27 +22,32 @@ namespace Recurs_LinkedList
         public Node head;
         public RLinked_List() { }
 
-        public RLinked_List(int data)
+        public RLinked_List(int data)  //1 констурктор с 1 элементом
         {
             Node temp = new Node(data);
             this.head = temp;
         }
 
-        public int First{ get 
+        public int First{ get             // 49 властивость для получения и присвоения 
             {
                 return this.head.Data;
             }
             set
             {
+                if (this.head == null)
+                {
+                    Node temp = new Node(value);
+                    this.head = temp;
+                }
                 this.head.Data = value;
             }
         }
-        public RLinked_List(RLinked_List Same)
+        public RLinked_List(RLinked_List Same) // 3 конструктор копирования
         {
             head = Same.head;
         }
 
-        public void insertend(int data)
+        public void insertend(int data)     // 6 добаление последним 
         {
             Node temp = this.head;
             Node newnode = new Node(data);
@@ -68,7 +73,7 @@ namespace Recurs_LinkedList
             }
         }
 
-        public int Count_elements () {
+        public int Count_elements () {                   // 43 подсчет элементов 
             
             if (this.head == null){
                 Console.WriteLine("it is nothing in the List");
@@ -95,7 +100,7 @@ namespace Recurs_LinkedList
             }
         }
 
-        public void Add_atPosition(int new_data, int position)
+        public void Add_atPosition(int new_data, int position)     // 7 добавление енным  всписок 
         {
             if (position <= 0)
             {
@@ -149,9 +154,10 @@ namespace Recurs_LinkedList
                     }
                 }
             }
+               
         }
         
-        public int Delete_Last()
+        public int Delete_Last()  //15 удаление последнего
         {
             Node temp = this.head;
             int number=recDelete_Last(temp);
@@ -178,7 +184,7 @@ namespace Recurs_LinkedList
 
         }
 
-        public int? Delete_withValue (int value)
+        public int? Delete_withValue (int value)        // 18 удаление по значению
         {
             Node temp = this.head;
             if (temp.Data == value)
@@ -223,7 +229,7 @@ namespace Recurs_LinkedList
             return null;
         }
 
-        public void Print_Reverse()
+        public void Print_Reverse()    // 28 не рекурсивное обратное печатание 
         {
             Node temp = this.head;
             int count = Count_elements();
@@ -331,6 +337,47 @@ namespace Recurs_LinkedList
             }
 
         }
+
+        // дополнительное (39)
+        public void Sort()
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("it is nothing to sort in this list");
+                return;
+            }
+            else
+            {
+                RLinked_List For_sort = new RLinked_List();
+                int elements = this.Count_elements();
+                int[] arr = new int[elements];
+                Node temp = this.head;
+                for (int i = 0; i < elements; i++)
+                {
+                    arr[i] = temp.Data;
+                    temp = temp.Next;
+                }
+                int ret = 0;
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    for (int k = j; k < arr.Length; k++)
+                    {
+                        if (arr[j] > arr[k])
+                        {
+                            ret = arr[j];
+                            arr[j] = arr[k];
+                            arr[k] = ret;
+                        }
+                    }
+                }
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    For_sort.insertend(arr[i]);
+                }
+                this.head = For_sort.head;
+
+            }
+        }
     }
 
     class Program
@@ -339,103 +386,114 @@ namespace Recurs_LinkedList
         {
             Console.WriteLine("Hello World!");
 
-            RLinked_List List_D = new RLinked_List();
+          /*  RLinked_List List_D = new RLinked_List();
             List_D.insertend(34);
             List_D.Delete_withValue(56); //исправлено номер 18, удаление элемента из списка из 1 элемента
-            List_D.Print();
+            List_D.Print();*/
 
-            RLinked_List List_A = new RLinked_List();
+           RLinked_List List_A = new RLinked_List();
             List_A.insertend(34);           
-            List_A.insertend(56);
+            List_A.insertend(-99);
             List_A.insertend(3);
             List_A.insertend(19);
-            List_A.insertend(87);
+            List_A.insertend(-87);
+            List_A.insertend(-5);
+            List_A.insertend(37);
+            List_A.insertend(64);
             Console.WriteLine("elements in A");
             List_A.Print();
-            List_A.Add_atPosition(99, -2); //исправлено номер 7 добаление с отрицательным индексом 
-            List_A.Print();
-            List_A.Delete_Last();
+            List_A.Sort();
             List_A.Print();
 
-            // исправлено номер 15, проверка удаления 1 элемента
-            RLinked_List List_1 = new RLinked_List(78);
-            List_1.Delete_Last();
-            List_1.Print();
+          /*  RLinked_List List_T= new RLinked_List();
+            List_T.First = 39;
+            List_T.Print();*/
 
-            RLinked_List List_B = new RLinked_List(78);
-            List_B.insertend(3);
-            List_B.insertend(5);
-            List_B.insertend(90);
-            List_B.insertend(45);
-            Console.WriteLine("elements in B");
-            List_B.Print();
-            Console.WriteLine();
+            /* List_A.Add_atPosition(99, -2); //исправлено номер 7 добаление с отрицательным индексом 
+             List_A.Print();
 
-            RLinked_List List_Sum = new RLinked_List();
+             List_A.Delete_Last();
+             List_A.Print();
 
-            List_Sum = List_A + List_B;
-            Console.WriteLine("elements in Sum");
-            List_Sum.Print();
-            RLinked_List copy_Sum = new RLinked_List(List_Sum);
-            Console.WriteLine("elements in copy");
-            copy_Sum.Print();
-            Console.WriteLine();
+             // исправлено номер 15, проверка удаления 1 элемента
+             RLinked_List List_1 = new RLinked_List(78);
+             List_1.Delete_Last();
+             List_1.Print();*/
 
-            bool b = List_A > List_B;
-            bool c = List_A < List_B;
-            bool s = List_A < List_Sum;
+            /* RLinked_List List_B = new RLinked_List(78);
+             List_B.insertend(3);
+             List_B.insertend(5);
+             List_B.insertend(90);
+             List_B.insertend(45);
+             Console.WriteLine("elements in B");
+             List_B.Print();
+             Console.WriteLine();
 
-            Console.WriteLine("number of elements in list A: "+ List_A.Count_elements());
-            Console.WriteLine("number of elements in list B: " + List_B.Count_elements());
-            Console.WriteLine();
+             RLinked_List List_Sum = new RLinked_List();
 
-            Console.WriteLine(" operation List_A bigger List_B: " + b );
-            Console.WriteLine("operation List_A less List_B: " + c);
-            Console.WriteLine("operation List_A less List_Sum: " + s);
-            Console.WriteLine();
+             List_Sum = List_A + List_B;
+             Console.WriteLine("elements in Sum");
+             List_Sum.Print();
+             RLinked_List copy_Sum = new RLinked_List(List_Sum);
+             Console.WriteLine("elements in copy");
+             copy_Sum.Print();
+             Console.WriteLine();
 
-            List_A.Add_atPosition(65, 4);
-            Console.WriteLine("add 65 at position 4 List A");
-            List_A.Print();
-            Console.WriteLine();
+             bool b = List_A > List_B;
+             bool c = List_A < List_B;
+             bool s = List_A < List_Sum;
 
-            List_A.insertend(1);
-            Console.WriteLine("add 1 at last position");
-            List_A.Print();
-            Console.WriteLine();
+             Console.WriteLine("number of elements in list A: "+ List_A.Count_elements());
+             Console.WriteLine("number of elements in list B: " + List_B.Count_elements());
+             Console.WriteLine();
 
-            List_A.Delete_Last();
-            Console.WriteLine("delete last position");
-            List_A.Print();
-            Console.WriteLine();
+             Console.WriteLine(" operation List_A bigger List_B: " + b );
+             Console.WriteLine("operation List_A less List_B: " + c);
+             Console.WriteLine("operation List_A less List_Sum: " + s);
+             Console.WriteLine();
 
-            List_A.Delete_withValue(34); //удаление элемента 34
-            List_A.Delete_withValue(7);
-            Console.WriteLine("trying to delete 34 and 7");
-            List_A.Print();
-            Console.WriteLine();
+             List_A.Add_atPosition(65, 4);
+             Console.WriteLine("add 65 at position 4 List A");
+             List_A.Print();
+             Console.WriteLine();
 
-            List_A.First = 44;
-            Console.WriteLine("change value first in A");
-            List_A.Print();
-            Console.WriteLine();
+             List_A.insertend(1);
+             Console.WriteLine("add 1 at last position");
+             List_A.Print();
+             Console.WriteLine();
 
-            Console.WriteLine(List_A.First);
-              List_A.Print_Reverse();
-            Console.WriteLine();
+             List_A.Delete_Last();
+             Console.WriteLine("delete last position");
+             List_A.Print();
+             Console.WriteLine();
 
-            List_A.insertend(99);
-            Console.WriteLine("elements in A");
-            List_A.Print();
-            Console.WriteLine("elements in B");
-            List_B.Print();
-            Console.WriteLine();
+             List_A.Delete_withValue(34); //удаление элемента 34
+             List_A.Delete_withValue(7);
+             Console.WriteLine("trying to delete 34 and 7");
+             List_A.Print();
+             Console.WriteLine();
 
-            bool d = List_A > List_B;
-            bool e = List_A < List_B;
-            Console.WriteLine(" operation List_A bigger List_B: " + d);
-            Console.WriteLine("operation List_A less List_B: " + e);
-            Console.WriteLine();*/
+             List_A.First = 44;
+             Console.WriteLine("change value first in A");
+             List_A.Print();
+             Console.WriteLine();
+
+             Console.WriteLine(List_A.First);
+               List_A.Print_Reverse();
+             Console.WriteLine();
+
+             List_A.insertend(99);
+             Console.WriteLine("elements in A");
+             List_A.Print();
+             Console.WriteLine("elements in B");
+             List_B.Print();
+             Console.WriteLine();
+
+             bool d = List_A > List_B;
+             bool e = List_A < List_B;
+             Console.WriteLine(" operation List_A bigger List_B: " + d);
+             Console.WriteLine("operation List_A less List_B: " + e);
+             Console.WriteLine();*/
         }
     }
 }
